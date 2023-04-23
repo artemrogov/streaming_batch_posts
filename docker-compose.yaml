@@ -1,0 +1,27 @@
+version: "3.7"
+
+services:
+  broker_data:
+    image: docker.io/bitnami/rabbitmq:3.9
+    container_name: broker_data
+    ports:
+      - '4369:4369'
+      - '5551:5551'
+      - '5552:5552'
+      - '5672:5672'
+      - '25672:25672'
+      - '15672:15672'
+    environment:
+      - RABBITMQ_USERNAME=admin
+      - RABBITMQ_PASSWORD=test123456
+    volumes:
+      - 'learn_broker_rabbitmq_data:/bitnami/rabbitmq/mnesia'
+    networks:
+      - stream_broker_data_network
+
+networks:
+  stream_broker_data_network:
+    driver: bridge
+
+volumes:
+  learn_broker_rabbitmq_data:
