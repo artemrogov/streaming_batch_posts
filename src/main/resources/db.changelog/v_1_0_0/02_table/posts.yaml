@@ -1,0 +1,26 @@
+databaseChangeLog:
+  - changeSet:
+      id: posts-table
+      author: Artem Rogov
+      changes:
+        - createTable:
+            tableName: posts
+            defaultValueBoolean:  true
+            columns:
+              - column:
+                  name: id
+                  constraints:
+                    nullable: false
+                  type: bigint
+                  defaultValueComputed: nextval('posts-id-seq')
+              - column:
+                  name: title
+                  constraints:
+                    nullable: false
+                  type: varchar
+              - column:
+                  name: content
+                  type: text
+              - column:
+                  name: active
+                  type: boolean

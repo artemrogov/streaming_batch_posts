@@ -1,0 +1,12 @@
+databaseChangeLog:
+
+  # ============= RELEASE 1.0.0 ======================
+
+  # sequences
+  - include: { relativeToChangelogFile: true, file: v_1_0_0/01_sequence/posts-sequence.yaml }
+
+  # schema
+  - include: { relativeToChangelogFile: true, file: v_1_0_0/02_table/posts.yaml }
+
+  # Constraints
+  - include: { relativeToChangelogFile: true, file: v_1_0_0/03_constraint/posts-constraint.yaml }

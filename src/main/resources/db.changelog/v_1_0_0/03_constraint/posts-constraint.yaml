@@ -1,0 +1,10 @@
+databaseChangeLog:
+
+  - changeSet:
+      id: posts-pkey
+      author: Artem Rogov
+      changes:
+        - addPrimaryKey:
+            columnNames: id
+            constraintName: posts-id-seqt
+            tableName: posts

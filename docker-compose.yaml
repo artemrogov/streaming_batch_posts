@@ -11,7 +11,7 @@ services:
       POSTGRES_USER: testdb
       POSTGRES_PASSWORD: test123456
     ports:
-      - "5432:5432"
+      - "5433:5432"
     volumes:
       - pg_volume_data:/var/lib/postgresql/data/
     networks:
