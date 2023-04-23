@@ -1,6 +1,22 @@
 version: "3.7"
 
 services:
+  db:
+    image: postgres:latest
+    restart: unless-stopped
+    container_name: db
+    tty: true
+    environment:
+      POSTGRES_DB: testdb
+      POSTGRES_USER: testdb
+      POSTGRES_PASSWORD: test123456
+    ports:
+      - "5432:5432"
+    volumes:
+      - pg_volume_data:/var/lib/postgresql/data/
+    networks:
+      - stream_broker_data_network
+
   broker_data:
     image: docker.io/bitnami/rabbitmq:3.9
     container_name: broker_data
@@ -25,3 +41,4 @@ networks:
 
 volumes:
   learn_broker_rabbitmq_data:
+  pg_volume_data:
