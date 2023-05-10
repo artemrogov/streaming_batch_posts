@@ -1,0 +1,10 @@
+databaseChangeLog:
+
+  - changeSet:
+      id: cats-pkey
+      author: Artem Rogov
+      changes:
+        - addPrimaryKey:
+            columnNames: id
+            constraintName: cats-id-seqt
+            tableName: categories

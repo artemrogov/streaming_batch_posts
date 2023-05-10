@@ -1,0 +1,30 @@
+databaseChangeLog:
+  - changeSet:
+      id: posts-categories-pv
+      author: Artem Rogov
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: post_id
+            baseTableName: categories_posts
+            baseTableSchemaName: public
+            deferrable: false
+            constraintName: fk_posts_cats
+            onDelete: CASCADE
+            referencedColumnNames: id
+            referencedTableName: posts
+            referencedTableSchemaName: public
+
+  - changeSet:
+      id: cats-posts-pv
+      author: Artem Rogov
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: cat_id
+            baseTableName: categories_posts
+            baseTableSchemaName: public
+            deferrable: false
+            constraintName: fk_cats_posts
+            onDelete: CASCADE
+            referencedColumnNames: id
+            referencedTableName: categories
+            referencedTableSchemaName: public

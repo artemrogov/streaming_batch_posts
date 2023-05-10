@@ -1,12 +1,17 @@
 databaseChangeLog:
 
-  # ============= RELEASE 1.0.0 ======================
-
   # sequences
   - include: { relativeToChangelogFile: true, file: v_1_0_0/01_sequence/posts-sequence.yaml }
+  - include: { relativeToChangelogFile: true, file: v_1_0_0/01_sequence/categories-sequnce.yaml }
 
   # schema
   - include: { relativeToChangelogFile: true, file: v_1_0_0/02_table/posts.yaml }
+  - include: { relativeToChangelogFile: true, file: v_1_0_0/02_table/categories.yaml }
+  - include: { relativeToChangelogFile: true, file: v_1_0_0/02_table/categories_posts.yaml }
 
   # Constraints
   - include: { relativeToChangelogFile: true, file: v_1_0_0/03_constraint/posts-constraint.yaml }
+  - include: { relativeToChangelogFile: true, file: v_1_0_0/03_constraint/cats-constraint.yaml }
+
+   # foreign keys:
+  - include: { relativeToChangelogFile: true, file: v_1_0_0/04_foreign_keys/categories_posts_foreign.yaml }

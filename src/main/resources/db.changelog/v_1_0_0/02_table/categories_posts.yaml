@@ -1,0 +1,18 @@
+databaseChangeLog:
+  - changeSet:
+      id: links-cats-posts
+      author: Artem Rogov
+      changes:
+        - createTable:
+            tableName: categories_posts
+            columns:
+              - column:
+                  name: cat_id
+                  constraints:
+                    nullable: false
+                  type: bigint
+              - column:
+                  name: post_id
+                  constraints:
+                    nullable: false
+                  type: bigint

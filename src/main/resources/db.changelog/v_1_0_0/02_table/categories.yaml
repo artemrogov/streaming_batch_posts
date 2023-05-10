@@ -1,0 +1,26 @@
+databaseChangeLog:
+  - changeSet:
+      id: categories-table
+      author: Artem Rogov
+      changes:
+        - createTable:
+            tableName: categories
+            defaultValueBoolean:  true
+            columns:
+              - column:
+                  name: id
+                  constraints:
+                    nullable: false
+                  type: bigint
+                  defaultValueComputed: nextval('cats-id-seq')
+              - column:
+                  name: title
+                  constraints:
+                    nullable: false
+                  type: varchar
+              - column:
+                  name: content
+                  type: text
+              - column:
+                  name: active
+                  type: boolean

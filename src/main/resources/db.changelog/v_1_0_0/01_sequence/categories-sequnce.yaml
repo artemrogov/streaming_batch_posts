@@ -1,0 +1,9 @@
+databaseChangeLog:
+  - changeSet:
+      id: cats-sequence
+      author: Artem Rogov
+      changes:
+        - createSequence:
+            sequenceName: cats-id-seq
+            incrementBy: 1
+            startValue: 1000
