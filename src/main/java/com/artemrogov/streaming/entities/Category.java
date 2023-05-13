@@ -1,5 +1,6 @@
 package com.artemrogov.streaming.entities;
 
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -7,12 +8,11 @@ import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-@Entity(name = "post")
-@Table(name = "posts")
+@Entity(name = "category")
+@Table(name = "categories")
 @Getter
 @Setter
-public class Post {
-
+public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -27,6 +27,11 @@ public class Post {
     @Column(name = "active",columnDefinition = "boolean default false")
     private Boolean active;
 
-    @ManyToMany(mappedBy = "posts", fetch = FetchType.LAZY,cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    private Set<Category> categories = new HashSet<>();
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE},fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "categories_posts",
+            joinColumns = @JoinColumn(name = "cat_id"),
+            inverseJoinColumns = @JoinColumn(name = "post_id")
+    )
+    private Set<Post> posts = new HashSet<>();
 }
