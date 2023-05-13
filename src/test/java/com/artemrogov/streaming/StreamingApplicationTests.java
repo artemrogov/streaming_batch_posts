@@ -49,4 +49,15 @@ class StreamingApplicationTests {
 		nPost.setActive(true);
 		postDataRepository.save(nPost);
 	}
+
+
+	@Test
+	public void createNewCategory(){
+		Category category = new Category();
+		category.setTitle("cars");
+		category.setActive(true);
+		category.setContent("test cars");
+
+		this.categoryRepository.save(category);
+	}
 }

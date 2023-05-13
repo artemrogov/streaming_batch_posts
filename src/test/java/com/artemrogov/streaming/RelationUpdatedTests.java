@@ -31,4 +31,10 @@ public class RelationUpdatedTests {
         asscociateService.updatePivotalRelations(1000L,1000L);
     }
 
+
+    @Test
+    public void testManyLinksExistsPosts(){
+        asscociateService.updatePivotalRelations(1001L,1006L);
+    }
+
 }
