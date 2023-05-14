@@ -1,0 +1,30 @@
+databaseChangeLog:
+  - changeSet:
+      id: users-posts-fk-migrate
+      author: Artem Rogov
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: user_id
+            baseTableName: users_posts
+            baseTableSchemaName: public
+            deferrable: false
+            constraintName: fk_users_posts
+            onDelete: CASCADE
+            referencedColumnNames: id
+            referencedTableName: users
+            referencedTableSchemaName: public
+
+  - changeSet:
+      id: posts-users-fk-migrate
+      author: Artem Rogov
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: post_id
+            baseTableName: users_posts
+            baseTableSchemaName: public
+            deferrable: false
+            constraintName: fk_posts_users
+            onDelete: CASCADE
+            referencedColumnNames: id
+            referencedTableName: posts
+            referencedTableSchemaName: public

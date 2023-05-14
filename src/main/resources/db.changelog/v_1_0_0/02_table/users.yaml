@@ -1,0 +1,32 @@
+databaseChangeLog:
+  - changeSet:
+      id: users-table
+      author: Artem Rogov
+      changes:
+        - createTable:
+            tableName: users
+            defaultValueBoolean:  true
+            columns:
+              - column:
+                  name: id
+                  constraints:
+                    nullable: false
+                  type: bigint
+                  defaultValueComputed: nextval('users-id-seq')
+              - column:
+                  name: username
+                  constraints:
+                    nullable: false
+                  type: varchar
+              - column:
+                  name: email
+                  type: varchar
+              - column:
+                  name: first_name
+                  type: varchar
+              - column:
+                  name: last_name
+                  type: varchar
+              - column:
+                  name: active
+                  type: boolean

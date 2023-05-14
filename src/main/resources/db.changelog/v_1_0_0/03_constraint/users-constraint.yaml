@@ -1,0 +1,10 @@
+databaseChangeLog:
+
+  - changeSet:
+      id: users-pkey
+      author: Artem Rogov
+      changes:
+        - addPrimaryKey:
+            columnNames: id
+            constraintName: users-id-seqt
+            tableName: users

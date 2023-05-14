@@ -1,0 +1,18 @@
+databaseChangeLog:
+  - changeSet:
+      id: users-posts-pv
+      author: Artem Rogov
+      changes:
+        - createTable:
+            tableName: users_posts
+            columns:
+              - column:
+                  name: post_id
+                  constraints:
+                    nullable: false
+                  type: bigint
+              - column:
+                  name: user_id
+                  constraints:
+                    nullable: false
+                  type: bigint
