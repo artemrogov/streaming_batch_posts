@@ -1,24 +1,6 @@
-## Streaming data
+### Libs and manuals
 
-
-Example requests send data channels: 
-
-```bash
-
-curl -XPOST http://localhost:8000/api-stream/send01
-
-```
-
-
-```bash
-
-curl -XPOST http://localhost:8000/api-stream/send02
-
-```
-
-
-```bash
-
-curl -XPOST http://localhost:8000/api-stream/send02
-
-```
+- [PDF Lib](https://github.com/dhorions/boxable)
+- [PDF BOX manual simple](https://www.baeldung.com/java-pdf-creation)
+- [PDF BOX tutorials](https://www.tutorialspoint.com/pdfbox/pdfbox_environment.htm)
+- [Create tables pdf examples pdf box](https://github.com/vandeseer/easytable/blob/master/src/test/java/org/vandeseer/integrationtest/ExcelLikeExampleTest.java)
