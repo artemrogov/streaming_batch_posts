@@ -1,6 +1,8 @@
 package com.artemrogov.streaming;
 
 
+import com.artemrogov.streaming.entities.Post;
+import com.artemrogov.streaming.repositories.PostDataRepository;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
@@ -10,10 +12,13 @@ import org.apache.pdfbox.pdmodel.encryption.StandardProtectionPolicy;
 import org.apache.pdfbox.pdmodel.font.PDMMType1Font;
 import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.awt.*;
 import java.io.IOException;
+import java.util.List;
+
 import org.vandeseer.easytable.structure.Row;
 import org.vandeseer.easytable.structure.Table;
 import org.vandeseer.easytable.structure.cell.TextCell;
@@ -27,6 +32,11 @@ import static org.vandeseer.easytable.settings.HorizontalAlignment.*;
 public class PdfCreatorDocTests {
 
     private final static Color BLUE_DARK = new Color(76, 129, 190);
+
+
+    @Autowired
+    private PostDataRepository postDataRepository;
+
 
     private final static Object[][] DATA_A = new Object[][]{
             {"Test 01", 10, "simple text 01","simple 100",100,"yes"},
@@ -137,6 +147,60 @@ public class PdfCreatorDocTests {
 
                 document.protect(standardProtectionPolicy); // set document protection
 
+            }
+
+            document.save(pathTableFile);
+        }
+    }
+
+
+    @Test
+    public void createTablePostsTest() throws IOException{
+
+        List<Post> posts = this.postDataRepository.findAll();
+
+        String pathTableFile = "/home/oem/learn/streaming/src/main/resources/test_pdf/FirstMyTable002.pdf";
+
+        try (PDDocument document = new PDDocument()) {
+
+            final PDPage page = new PDPage(PDRectangle.A4);
+            document.addPage(page);
+
+            try (PDPageContentStream contentStream = new PDPageContentStream(document, page)) {
+
+                final Table.TableBuilder tableBuilder = Table.builder()
+                        .addColumnsOfWidth(50, 50, 50, 100)
+                        .fontSize(8)
+                        .font(HELVETICA);
+
+                tableBuilder.addRow(Row.builder()
+                        .add(TextCell.builder().text("id").horizontalAlignment(LEFT).borderWidth(1).build())
+                        .add(TextCell.builder().text("title").borderWidth(1).build())
+                        .add(TextCell.builder().text("active").borderWidth(1).build())
+                        .add(TextCell.builder().text("content").borderWidth(1).build())
+                        .backgroundColor(BLUE_DARK)
+                        .textColor(WHITE)
+                        .font(HELVETICA_BOLD)
+                        .fontSize(9)
+                        .horizontalAlignment(CENTER)
+                        .build());
+
+                posts.forEach(p-> tableBuilder.addRow(Row.builder()
+                        .add(TextCell.builder().text(String.valueOf(p.getId())).horizontalAlignment(LEFT).borderWidth(1).borderColor(BLACK).build())
+                        .add(TextCell.builder().text(String.valueOf(p.getTitle())).horizontalAlignment(LEFT).borderWidth(1).borderColor(BLACK).build())
+                        .add(TextCell.builder().text(String.valueOf(p.getActive())).horizontalAlignment(LEFT).borderWidth(1).borderColor(BLACK).build())
+                        .add(TextCell.builder().text(String.valueOf(p.getContent())).horizontalAlignment(LEFT).borderWidth(1).borderColor(BLACK).build())
+                        .build())
+                );
+
+                TableDrawer tableDrawer = TableDrawer.builder()
+                        .contentStream(contentStream)
+                        .startX(80f)
+                        .startY(page.getMediaBox().getUpperRightY() - 40f)
+                        .table(tableBuilder.build())
+                        .build();
+
+                tableDrawer.draw();
             }
 
             document.save(pathTableFile);

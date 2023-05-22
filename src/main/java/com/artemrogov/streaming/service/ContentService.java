@@ -7,7 +7,6 @@ import com.artemrogov.streaming.repositories.CategoryRepository;
 import com.artemrogov.streaming.repositories.PostDataRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
 import javax.transaction.Transactional;
 import java.util.List;
 
