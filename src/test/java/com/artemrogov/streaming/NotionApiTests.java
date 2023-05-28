@@ -1,6 +1,7 @@
 package com.artemrogov.streaming;
 
 
+import com.artemrogov.streaming.dao.ContentBlogDao;
 import com.artemrogov.streaming.dto.PageNotionResponse;
 import com.artemrogov.streaming.dto.TableModel;
 import com.artemrogov.streaming.service.NotionDataService;
@@ -24,6 +25,10 @@ public class NotionApiTests {
 
     @Autowired
     private NotionDataService notionDataService;
+
+
+    @Autowired
+    private ContentBlogDao contentBlogDao;
 
 
     @Test
@@ -53,5 +58,15 @@ public class NotionApiTests {
         for (TableModel tableModel : tablePerson){
             System.out.println(tableModel.getFirstName() + " :" + tableModel.getLastName());
         }
+    }
+
+
+    @Test
+    public void testDaoSimple(){
+
+        contentBlogDao.getData().forEach(p->{
+            System.out.println(p.getTitle() + " ids: " + p.getCategoriesIds());
+        });
+
     }
 }
