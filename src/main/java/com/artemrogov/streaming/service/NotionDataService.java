@@ -4,10 +4,9 @@ package com.artemrogov.streaming.service;
 import com.artemrogov.streaming.dto.PageNotionResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.reactive.function.client.WebClient;
-import org.springframework.web.util.DefaultUriBuilderFactory;
 import reactor.core.publisher.Mono;
 
 @Service
@@ -19,11 +18,13 @@ public class NotionDataService {
 
     private final static String API_DATABASE_URL = "databases/";
 
-    public Mono<PageNotionResponse> getDatabaseValues(String idDatabase, String properties){
+    public Mono<PageNotionResponse> getDatabaseValues(String idDatabase, MultiValueMap<String, String> queryParams){
+
         return webClient.post().uri(uriBuilder ->
             uriBuilder.path(API_DATABASE_URL+"/{idDatabase}/query")
-                    .queryParam("filter_properties","{properties}")
-                    .build(idDatabase,properties))
+                    .queryParams(queryParams)
+                    .build(idDatabase)
+                )
                 .retrieve()
                 .bodyToMono(PageNotionResponse.class);
     }
