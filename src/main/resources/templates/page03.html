@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Main Page 03</title>
+</head>
+<body>
+<h2>List simple posts</h2>
+
+<p th:text="#{main.label}"></p>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>title</th>
+        <th>content</th>
+        <th>actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="post : ${posts}">
+        <td th:text="${post.id}"></td>
+        <td th:text="${post.title}"></td>
+        <td th:text="${post.content}"></td>
+        <td><a th:href="@{/edit-post/{id}(id=${post.id})}">edit</a></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
