@@ -24,22 +24,6 @@ public class ContentBlogDao {
 
 
     public List<ContentDataDto> getData(){
-
-        CriteriaBuilder criteria = entityManager.getCriteriaBuilder();
-        CriteriaQuery<Post> postCriteriaQuery = criteria.createQuery(Post.class);
-        Root<Post> postRoot = postCriteriaQuery.from(Post.class);
-        Join<Post, Category> jPostCategories = postRoot.join("categories");
-
-        TypedQuery<Post> postQuery = entityManager.createQuery(postCriteriaQuery);
-
-        return postQuery.getResultList().stream().map(p-> {
-            ContentDataDto content = new ContentDataDto();
-            content.setId(p.getId());
-            content.setTitle(p.getTitle());
-            List<Long> ids = p.getCategories().stream().map(Category::getId).collect(Collectors.toList());
-            content.setCategoriesIds(ids);
-            return content;
-        }).collect(Collectors.toList());
-
+        return null;
     }
 }
