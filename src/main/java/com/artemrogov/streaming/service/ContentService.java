@@ -1,6 +1,7 @@
 package com.artemrogov.streaming.service;
 
 
+import com.artemrogov.streaming.dto.DataTableResultList;
 import com.artemrogov.streaming.entities.Category;
 import com.artemrogov.streaming.entities.Post;
 import com.artemrogov.streaming.repositories.CategoryRepository;
@@ -53,5 +54,11 @@ public class ContentService implements IContentService{
         catCurrent.getPosts().remove(cPost);
         cPost.getCategories().remove(catCurrent);
         categoryRepository.save(catCurrent);
+    }
+
+
+    @Override
+    public List<DataTableResultList> getPosts(Long limit, Long offset) {
+        return null;
     }
 }

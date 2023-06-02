@@ -1,0 +1,23 @@
+package com.artemrogov.streaming.dto;
+
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.io.Serializable;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+public class PostDataRow implements Serializable {
+    @JsonProperty("id")
+    private Long id;
+    @JsonProperty("title")
+    private String title;
+    @JsonProperty("content")
+    private String content;
+}
