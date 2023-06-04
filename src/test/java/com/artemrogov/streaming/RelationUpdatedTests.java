@@ -1,10 +1,16 @@
 package com.artemrogov.streaming;
 
 
-import com.artemrogov.streaming.service.ContentService;
+import com.artemrogov.streaming.dto.blog.PostRequest;
+import com.artemrogov.streaming.service.content.ContentService;
+import com.artemrogov.streaming.utils.PostGenerator;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @SpringBootTest
 public class RelationUpdatedTests {
@@ -35,6 +41,14 @@ public class RelationUpdatedTests {
     @Test
     public void testManyLinksExistsPosts(){
         contentService.updatePivotalRelations(1001L,1006L);
+    }
+
+
+    @Test
+    public void fillPosts(){
+          List<PostRequest> postsRequestsData = Stream.generate(PostGenerator::generatePosts)
+                  .limit(20).collect(Collectors.toList());
+         this.contentService.createPosts(postsRequestsData);
     }
 
 }

@@ -2,11 +2,10 @@ package com.artemrogov.streaming;
 
 
 import com.artemrogov.streaming.dao.ContentBlogDao;
-import com.artemrogov.streaming.dto.PageNotionResponse;
-import com.artemrogov.streaming.dto.TableModel;
-import com.artemrogov.streaming.service.NotionDataService;
+import com.artemrogov.streaming.dto.notion.PageNotionResponse;
+import com.artemrogov.streaming.dto.notion.TableModel;
+import com.artemrogov.streaming.service.notion.NotionDataService;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonNode;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +15,6 @@ import org.springframework.util.MultiValueMap;
 import reactor.core.publisher.Mono;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 
 @SpringBootTest

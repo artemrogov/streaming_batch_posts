@@ -1,4 +1,4 @@
-package com.artemrogov.streaming;
+package com.artemrogov.streaming.controller;
 
 
 import lombok.RequiredArgsConstructor;

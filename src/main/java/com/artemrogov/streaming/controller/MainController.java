@@ -1,4 +1,4 @@
-package com.artemrogov.streaming;
+package com.artemrogov.streaming.controller;
 
 import com.artemrogov.streaming.finder.FinderProducerData;
 import com.artemrogov.streaming.ghost.ProducerGhost;

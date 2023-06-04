@@ -1,13 +1,70 @@
-<!DOCTYPE html>
+<!doctype html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Test Main Page 01</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link th:href="@{/coreui.css}" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+    <link href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+    <link href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
+    <title>Man page</title>
 </head>
 <body>
-<h2>Test Main Page 01</h2>
+<div th:replace="partials/header.html :: header"></div>
+<div class="body" style="margin-top: 20px;">
+    <div class="container-lg">
+        <div class="card mb-4">
+            <div class="card-header">test table</div>
+            <div class="card-body">
+                <table id="data-posts" class="table table-striped" style="width:100%">
+                    <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>title</th>
+                        <th>active</th>
+                    </tr>
+                    </thead>
+                    <tfoot>
+                    <tr>
+                        <th>id</th>
+                        <th>title</th>
+                        <th>active</th>
+                    </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script th:src="@{/coreui.js}"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 
-<p th:text="#{main.label}"></p>
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
 
+<script th:inline="javascript">
+
+    $(document).ready(function () {
+
+     var tableWidget = $('#data-posts').DataTable({
+     processing: true,
+     serverSide: true,
+     ajax: {
+         url: 'http://localhost:8000/api/posts',
+         type: 'POST',
+         contentType: 'application/json',
+         data: function (d) {
+             return JSON.stringify(d);
+         }
+     },
+     columns: [
+         { data: 'id' },
+         { data: 'title' },
+         { data: 'active' }
+     ]
+ });
+
+  });
+</script>
 </body>
 </html>

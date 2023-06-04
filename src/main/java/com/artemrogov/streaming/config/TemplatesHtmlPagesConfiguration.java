@@ -8,7 +8,7 @@ import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 
 @Configuration
-public class TemplaterConfig {
+public class TemplatesHtmlPagesConfiguration {
     @Bean
     public ClassLoaderTemplateResolver templateConfig() {
         ClassLoaderTemplateResolver template = new ClassLoaderTemplateResolver();

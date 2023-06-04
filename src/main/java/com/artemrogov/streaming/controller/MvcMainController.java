@@ -1,7 +1,7 @@
-package com.artemrogov.streaming;
+package com.artemrogov.streaming.controller;
 
 
-import com.artemrogov.streaming.dto.PostResponse;
+import com.artemrogov.streaming.dto.blog.PostResponse;
 import com.artemrogov.streaming.entities.Post;
 import com.artemrogov.streaming.repositories.PostDataRepository;
 import lombok.RequiredArgsConstructor;
@@ -25,7 +25,7 @@ public class MvcMainController {
     private final PostDataRepository postDataRepository;
 
 
-    @GetMapping(value = "/test-page01")
+    @GetMapping(value = "/main")
     public String getMainPage(){
         return "index";
     }

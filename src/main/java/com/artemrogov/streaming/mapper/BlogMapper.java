@@ -1,8 +1,8 @@
 package com.artemrogov.streaming.mapper;
 
 
-import com.artemrogov.streaming.dto.PostDataRow;
-import com.artemrogov.streaming.dto.PostRequest;
+import com.artemrogov.streaming.dto.datatable.PostDataRow;
+import com.artemrogov.streaming.dto.blog.PostRequest;
 import com.artemrogov.streaming.entities.Post;
 import org.mapstruct.BeanMapping;
 import org.mapstruct.Mapper;

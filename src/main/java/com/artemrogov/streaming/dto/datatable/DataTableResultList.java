@@ -1,4 +1,4 @@
-package com.artemrogov.streaming.dto;
+package com.artemrogov.streaming.dto.datatable;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -20,13 +20,13 @@ import java.util.List;
 public class DataTableResultList implements Serializable {
 
     @JsonProperty("draw")
-    private Integer draw;
+    private long draw;
 
     @JsonProperty("recordsTotal")
-    private Integer recordsTotal;
+    private long recordsTotal;
 
     @JsonProperty("recordsFiltered")
-    private Integer recordsFiltered;
+    private long recordsFiltered;
 
     @JsonProperty("data")
     private List<?> data = new ArrayList<>();
