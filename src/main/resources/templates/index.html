@@ -16,6 +16,9 @@
         <div class="card mb-4">
             <div class="card-header">test table</div>
             <div class="card-body">
+                <form id="test-report">
+                    <input type="submit" value="download excel" />
+                </form>
                 <table id="data-posts" class="table table-striped" style="width:100%">
                     <thead>
                     <tr>
@@ -63,6 +66,21 @@
          { data: 'active' }
      ]
  });
+
+  $("#test-report").on('submit',function(e){
+      e.preventDefault();
+      tableWidget.ajax.reload();
+      $.ajax({
+         method: "POST",
+         contentType: 'application/json',
+         url: "http://localhost:8000/api/posts/generate-report",
+         data: tableWidget.ajax.params()
+     }).done(function( msg ) {
+          alert( "Generate report excel: " + msg );
+     });
+
+  });
+
 
   });
 </script>

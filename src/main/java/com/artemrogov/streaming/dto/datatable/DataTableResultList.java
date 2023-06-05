@@ -29,5 +29,5 @@ public class DataTableResultList implements Serializable {
     private long recordsFiltered;
 
     @JsonProperty("data")
-    private List<?> data = new ArrayList<>();
+    private List<? extends PostDataRow> data = new ArrayList<>();
 }

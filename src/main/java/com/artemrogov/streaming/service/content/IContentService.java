@@ -1,9 +1,11 @@
 package com.artemrogov.streaming.service.content;
 
 import com.artemrogov.streaming.dto.blog.PostRequest;
+import com.artemrogov.streaming.dto.datatable.DataTableRequest;
 import com.artemrogov.streaming.dto.datatable.DataTableResultList;
 import com.artemrogov.streaming.dto.datatable.PostDataRow;
 
+import java.io.IOException;
 import java.util.List;
 
 public interface IContentService {
@@ -25,5 +27,8 @@ public interface IContentService {
     void destroy(Long id);
 
     void destroyByIds(List<Long> ids);
+
+
+    void generateExcelReport(DataTableRequest request) throws IOException;
 
 }
