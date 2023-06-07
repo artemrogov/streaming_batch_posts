@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(value = "/api-stream")
 @RequiredArgsConstructor
-public class MainController {
+public class CMain {
 
     private final ProducerData producerData;
     private final FinderProducerData finderProducerData;

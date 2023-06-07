@@ -1,0 +1,51 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link th:href="@{/coreui.css}" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+    <title>Edit post</title>
+</head>
+<body>
+<div th:replace="partials/header.html :: header"></div>
+<div class="body flex-grow-1 px-3" style="margin-top: 20px;">
+    <div class="container-lg">
+        <div class="row">
+            <div class="col">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        Edit Post ID: <strong th:text="${post.id}"></strong>
+                    </div>
+                    <div class="card-body">
+                        <form action="#" th:action="@{/posts/update/{id}(id=${post.id})}"  th:object="${post}" method="post">
+                            <div class="mb-3">
+                                <label class="form-label" for="titlePost">Title post</label>
+                                <input class="form-control" type="text" th:field="*{title}" placeholder="title" id="titlePost"/>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="content">Content post</label>
+                                <textarea th:field="*{content}" id="content" class="form-control"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script th:src="@{/coreui.js}"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.ckeditor.com/ckeditor5/38.0.1/classic/ckeditor.js"></script>
+<script>
+        ClassicEditor.create(document.querySelector('#content'),{
+            removePlugins: ['CKFinder'],
+        }).catch( error => {
+                console.error( error );
+        });
+</script>
+</body>
+</html>
+
+

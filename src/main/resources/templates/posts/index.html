@@ -25,6 +25,7 @@
                         <th>id</th>
                         <th>title</th>
                         <th>active</th>
+                        <th>actions</th>
                     </tr>
                     </thead>
                     <tfoot>
@@ -32,6 +33,7 @@
                         <th>id</th>
                         <th>title</th>
                         <th>active</th>
+                        <th>actions</th>
                     </tr>
                     </tfoot>
                 </table>
@@ -63,7 +65,8 @@
      columns: [
          { data: 'id' },
          { data: 'title' },
-         { data: 'active' }
+         { data: 'active' },
+         {data:null,defaultContent:"<a class='btn btn-secondary btn-sm' href='#'>View</a>&nbsp;&nbsp;<a class='btn btn-secondary btn-sm' id='edit-form' href='#'>Edit</a>&nbsp;&nbsp;<a class='btn btn-secondary btn-sm' href='#' id='destroy'>Destroy</a>"}
      ]
  });
 
@@ -90,6 +93,27 @@
      });
 
   });
+
+   $('#data-posts tbody').on('click', '#edit-form', function () {
+        var data = tableWidget.row($(this).parents('tr')).data();
+        var url = 'http://localhost:8000/posts/edit/'+data.id;
+        window.location.href=url;
+   });
+
+
+   $('#data-posts tbody').on('click', '#destroy', function (e) {
+        e.preventDefault();
+        var data = tableWidget.row($(this).parents('tr')).data();
+        var urlApi = 'http://localhost:8000/api/posts/destroy/'+data.id;
+        $.ajax({
+         method: "DELETE",
+         contentType: 'application/json',
+         url: urlApi,
+     }).done(function(response) {
+        console.log(response);
+        tableWidget.ajax.reload();
+     });
+   });
 
 
   });

@@ -11,10 +11,7 @@ import org.springframework.core.io.UrlResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -34,6 +31,12 @@ public class PostController {
         return  ResponseEntity.ok(contentService.getPosts(request.getLength(),request.getStart(), request.getDraw()));
     }
 
+
+    @DeleteMapping(value = "/destroy/{id}")
+    public ResponseEntity<String> destroyPosts(@PathVariable("id") Long id){
+        contentService.destroy(id);
+        return ResponseEntity.ok("delete posts");
+    }
 
     @PostMapping(value = "/generate-report")
     public ResponseEntity<Resource> generateReport(@RequestBody DataTableRequest request){
