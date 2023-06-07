@@ -28,7 +28,5 @@ public interface IContentService {
 
     void destroyByIds(List<Long> ids);
 
-
-    void generateExcelReport(DataTableRequest request) throws IOException;
-
+    String generateExcelReport(DataTableRequest request) throws IOException;
 }

@@ -123,7 +123,7 @@ public class ContentService implements IContentService{
 
 
     @Override
-    public void generateExcelReport(DataTableRequest request) throws IOException {
+    public String generateExcelReport(DataTableRequest request) throws IOException {
 
         List<PostDataRow> dataRows = new ArrayList<>(getPosts(
                 request.getLength(), request.getStart(), request.getDraw()).getData());
@@ -197,5 +197,7 @@ public class ContentService implements IContentService{
         FileOutputStream outputStream = new FileOutputStream(fileLocation);
         workbook.write(outputStream);
         workbook.close();
+
+        return fileLocation;
     }
 }
