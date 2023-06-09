@@ -14,11 +14,12 @@
 <div class="body" style="margin-top: 20px;">
     <div class="container-lg">
         <div class="card mb-4">
-            <div class="card-header">test table</div>
+            <div class="card-header">list posts</div>
             <div class="card-body">
                 <form id="test-report">
                     <input type="submit" value="download excel" />
                 </form>
+                <a th:href="@{~/posts/create}" class="btn btn-primary">Create</a>
                 <table id="data-posts" class="table table-striped" style="width:100%">
                     <thead>
                     <tr>
@@ -43,10 +44,8 @@
 </div>
 <script th:src="@{/coreui.js}"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-
 <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
-
 <script th:inline="javascript">
 
     $(document).ready(function () {
