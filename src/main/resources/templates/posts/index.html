@@ -22,6 +22,7 @@
                     <input type="submit" value="download excel" />
                 </form>
                 <a th:href="@{~/posts/create}" class="btn btn-primary">Create</a>
+                <button id="selectDelete">Delete select items</button>
                 <table id="data-posts" class="table table-striped" style="width:100%">
                     <thead>
                     <tr>
@@ -94,16 +95,37 @@
     }
  });
 
+    var arr = [];
+
     tableWidget.on('click', 'tr td:first-child', function () {
         if ($(this).hasClass('selected')) {
             $(this).removeClass('selected');
+            var data = tableWidget.row($(this).parents('tr')).data();
+            arr.pop();
         } else {
             tableWidget.$('tr.selected').removeClass('selected');
             var data = tableWidget.row($(this).parents('tr')).data();
-            console.log("id: " + data.id);
+            arr.push(data.id);
             $(this).addClass('selected');
         }
     });
+
+
+$("#selectDelete").on('click',function(){
+    if(arr.length > 0 ){
+      $.ajax({
+         method: "DELETE",
+         contentType: 'application/json',
+         url: "http://localhost:8000/api/posts/deleteAll",
+         data: JSON.stringify({"ids":arr})
+     }).done(function(data) {
+         tableWidget.ajax.reload();
+         alert("deleted data" + arr.length);
+     });
+
+    }
+    });
+
 
     tableWidget.on('click','#select_all',function(){
          var isChecked = $(this).is(':checked');

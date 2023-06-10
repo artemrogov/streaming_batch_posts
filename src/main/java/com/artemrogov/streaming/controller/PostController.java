@@ -3,6 +3,7 @@ package com.artemrogov.streaming.controller;
 
 import com.artemrogov.streaming.dto.datatable.DataTableRequest;
 import com.artemrogov.streaming.dto.datatable.DataTableResultList;
+import com.artemrogov.streaming.dto.datatable.DeleteListRequest;
 import com.artemrogov.streaming.service.content.IContentService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -17,6 +18,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "/api/posts")
@@ -36,6 +38,13 @@ public class PostController {
     public ResponseEntity<String> destroyPosts(@PathVariable("id") Long id){
         contentService.destroy(id);
         return ResponseEntity.ok("delete posts");
+    }
+
+
+    @DeleteMapping(value = "/deleteAll")
+    public ResponseEntity<String> deleteAllPosts(@RequestBody DeleteListRequest request){
+        contentService.destroyByIds(request.getIds());
+        return ResponseEntity.ok("delete all posts");
     }
 
     @PostMapping(value = "/generate-report")
