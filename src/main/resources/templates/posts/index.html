@@ -15,13 +15,13 @@
 <div class="body" style="margin-top: 20px;">
     <div class="container-lg">
         <div class="card mb-4">
-            <div class="card-header">list posts</div>
+            <div class="card-header">list data</div>
             <div class="card-body">
-                <form id="test-report">
-                    <input type="submit" value="download excel" />
-                </form>
-                <a th:href="@{~/posts/create}" class="btn btn-primary">Create</a>
-                <button id="selectDelete">Delete select items</button>
+                <div class="btn-group btn-group-sm" role="group" aria-label="basic">
+                    <a th:href="@{~/posts/create}" class="btn btn-primary">Create</a>
+                    <button id="generateReport" class="btn btn-success">Download Report</button>
+                    <button id="selectDelete" class="btn btn-danger">Delete select</button>
+                </div>
                 <table id="data-posts" class="table table-striped" style="width:100%">
                     <thead>
                     <tr>
@@ -136,8 +136,7 @@ $("#selectDelete").on('click',function(){
       arr.push(item);
   }
 
-  $("#test-report").on('submit',function(e){
-      e.preventDefault();
+  $("#generateReport").on('click',function(){
       tableWidget.ajax.reload();
       $.ajax({
          method: "POST",
@@ -157,7 +156,6 @@ $("#selectDelete").on('click',function(){
         a.remove();
         window.URL.revokeObjectURL(url);
      });
-
   });
 
    $('#data-posts tbody').on('click', '#edit-form', function () {
