@@ -1,7 +1,6 @@
 package com.artemrogov.streaming;
 
 
-import com.artemrogov.streaming.dao.ContentBlogDao;
 import com.artemrogov.streaming.dto.notion.PageNotionResponse;
 import com.artemrogov.streaming.dto.notion.TableModel;
 import com.artemrogov.streaming.service.notion.NotionDataService;
@@ -24,9 +23,6 @@ public class NotionApiTests {
     @Autowired
     private NotionDataService notionDataService;
 
-
-    @Autowired
-    private ContentBlogDao contentBlogDao;
 
 
     @Test
@@ -59,12 +55,4 @@ public class NotionApiTests {
     }
 
 
-    @Test
-    public void testDaoSimple(){
-
-        contentBlogDao.getData().forEach(p->{
-            System.out.println(p.getTitle() + " ids: " + p.getCategoriesIds());
-        });
-
-    }
 }

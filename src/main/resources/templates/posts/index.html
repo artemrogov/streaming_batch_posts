@@ -8,7 +8,6 @@
     <link href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
     <link href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/select/1.3.1/css/select.dataTables.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.3.6/css/buttons.dataTables.min.css">
     <title>Man page</title>
 </head>
 <body>
@@ -54,19 +53,12 @@
 <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
 <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js"></script>
-<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/2.3.6/js/dataTables.buttons.min.js"></script>
 <script th:inline="javascript">
 
-    $(document).ready(function () {
-
+$(document).ready(function () {
      var tableWidget = $('#data-posts').DataTable({
      processing: true,
      serverSide: true,
-     dom: 'Blfrtip',
-     buttons: [
-        'selectAll',
-        'selectNone'
-     ],
      ajax: {
          url: 'http://localhost:8000/api/posts',
          type: 'POST',
@@ -120,23 +112,29 @@ $("#selectDelete").on('click',function(){
          data: JSON.stringify({"ids":arr})
      }).done(function(data) {
          tableWidget.ajax.reload();
-         alert("deleted data" + arr.length);
+         arr.length = 0;
      });
 
     }
-    });
+  });
 
 
-    tableWidget.on('click','#select_all',function(){
+  tableWidget.on('click','#select_all',function(){
          var isChecked = $(this).is(':checked');
          if(isChecked){
-            tableWidget.rows().select(); // checked !
-            console.log(tableWidget.rows().data());
+            tableWidget.rows().select();
+            const ids = tableWidget.rows().data().toArray().flatMap((d)=>d.id);
+            ids.forEach(addItems);
          }else {
-           tableWidget.rows().deselect(); // unchecked !
+           tableWidget.rows().deselect();
+           arr.length = 0;
          }
     });
 
+
+  function addItems(item, index) {
+      arr.push(item);
+  }
 
   $("#test-report").on('submit',function(e){
       e.preventDefault();
@@ -182,7 +180,6 @@ $("#selectDelete").on('click',function(){
         tableWidget.ajax.reload();
      });
    });
-
 
   });
 </script>
