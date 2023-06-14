@@ -51,4 +51,8 @@ public class RelationUpdatedTests {
          this.contentService.createPosts(postsRequestsData);
     }
 
+    @Test
+    public void testImagesFillPost(){
+
+    }
 }

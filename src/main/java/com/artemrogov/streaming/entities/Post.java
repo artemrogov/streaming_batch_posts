@@ -29,4 +29,8 @@ public class Post {
 
     @ManyToMany(mappedBy = "posts", fetch = FetchType.LAZY,cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Set<Category> categories = new HashSet<>();
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "post_id",nullable = false)
+    private Set<Image> images = new HashSet<>();
 }
