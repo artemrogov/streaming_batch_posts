@@ -1,0 +1,9 @@
+databaseChangeLog:
+  - changeSet:
+      id: images-sequence
+      author: Artem Rogov
+      changes:
+        - createSequence:
+            sequenceName: images-id-seq
+            incrementBy: 1
+            startValue: 1000

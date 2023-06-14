@@ -4,6 +4,7 @@ databaseChangeLog:
   - include: { relativeToChangelogFile: true, file: v_1_0_0/01_sequence/posts-sequence.yaml }
   - include: { relativeToChangelogFile: true, file: v_1_0_0/01_sequence/categories-sequnce.yaml }
   - include: { relativeToChangelogFile: true, file: v_1_0_0/01_sequence/users-sequence.yml }
+  - include: { relativeToChangelogFile: true, file: v_1_0_0/01_sequence/images-sequence.yaml }
 
   # schema
   - include: { relativeToChangelogFile: true, file: v_1_0_0/02_table/posts.yaml }
@@ -11,13 +12,15 @@ databaseChangeLog:
   - include: { relativeToChangelogFile: true, file: v_1_0_0/02_table/categories_posts.yaml }
   - include: { relativeToChangelogFile: true, file: v_1_0_0/02_table/users.yaml }
   - include: { relativeToChangelogFile: true, file: v_1_0_0/02_table/users_posts.yaml }
+  - include: { relativeToChangelogFile: true, file: v_1_0_0/02_table/images.yaml }
 
   # Constraints
   - include: { relativeToChangelogFile: true, file: v_1_0_0/03_constraint/posts-constraint.yaml }
   - include: { relativeToChangelogFile: true, file: v_1_0_0/03_constraint/cats-constraint.yaml }
   - include: { relativeToChangelogFile: true, file: v_1_0_0/03_constraint/users-constraint.yaml }
+  - include: { relativeToChangelogFile: true, file: v_1_0_0/03_constraint/images-constraint.yaml }
 
    # foreign keys:
   - include: { relativeToChangelogFile: true, file: v_1_0_0/04_foreign_keys/categories_posts_foreign.yaml }
-
   - include: { relativeToChangelogFile: true, file: v_1_0_0/04_foreign_keys/users_posts_foreign.yaml }
+  - include: { relativeToChangelogFile: true, file: v_1_0_0/04_foreign_keys/images_foreign.yaml }

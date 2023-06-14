@@ -1,0 +1,15 @@
+databaseChangeLog:
+  - changeSet:
+      id: images-fk
+      author: Artem Rogov
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: post_id
+            baseTableName: images
+            baseTableSchemaName: public
+            deferrable: false
+            constraintName: fk_images_posts
+            onDelete: CASCADE
+            referencedColumnNames: id
+            referencedTableName: posts
+            referencedTableSchemaName: public

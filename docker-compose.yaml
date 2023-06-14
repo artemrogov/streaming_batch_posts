@@ -17,21 +17,50 @@ services:
     networks:
       - stream_broker_data_network
 
-  broker_data:
-    image: docker.io/bitnami/rabbitmq:3.9
-    container_name: broker_data
-    ports:
-      - '4369:4369'
-      - '5551:5551'
-      - '5552:5552'
-      - '5672:5672'
-      - '25672:25672'
-      - '15672:15672'
+
+  authdb:
+    image: postgres:latest
+    restart: unless-stopped
+    container_name: authdb
+    tty: true
     environment:
-      - RABBITMQ_USERNAME=admin
-      - RABBITMQ_PASSWORD=test123456
+      POSTGRES_DB: keycloak
+      POSTGRES_USER: keycloak
+      POSTGRES_PASSWORD: test123456
+    ports:
+      - "5434:5432"
     volumes:
-      - 'learn_broker_rabbitmq_data:/bitnami/rabbitmq/mnesia'
+      - authdb_data:/var/lib/postgresql/data/
+    networks:
+      - stream_broker_data_network
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:latest
+    container_name: keycloak
+    command: ["start"]
+    environment:
+      KC_PROXY: "edge"
+      KC_HTTP_RELATIVE_PATH: "/auth"
+      KC_HOSTNAME_STRICT: "false"
+      PROXY_ADDRESS_FORWARDING: "true"
+      KC_HOSTNAME_STRICT_HTTPS: "true"
+      KC_HOSTNAME: "localhost"
+      KC_DB_USERNAME: "keycloak"
+      KC_DB_PASSWORD: "test123456"
+      KC_DB: "postgres"
+      KC_DB_URL: "jdbc:postgresql://authdb:5432/keycloak"
+      KEYCLOAK_ADMIN: admin2
+      KEYCLOAK_ADMIN_PASSWORD: test123
+      KC_HTTP_PORT: 8080
+      KC_HTTP_ENABLED: "true"
+    ports:
+      - "8484:8080"
+    depends_on:
+      - authdb
+    links:
+      - "authdb:authdb"
+    volumes:
+      - ./plugins/:/opt/keycloak/providers
     networks:
       - stream_broker_data_network
 
@@ -40,5 +69,6 @@ networks:
     driver: bridge
 
 volumes:
-  learn_broker_rabbitmq_data:
+  plugins:
+  authdb_data:
   pg_volume_data:

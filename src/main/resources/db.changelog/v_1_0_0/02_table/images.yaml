@@ -1,0 +1,30 @@
+databaseChangeLog:
+  - changeSet:
+      id: images
+      author: Artem Rogov
+      changes:
+        - createTable:
+            tableName: images
+            columns:
+              - column:
+                  name: id
+                  constraints:
+                    nullable: false
+                  type: bigint
+                  defaultValueComputed: nextval('images-id-seq')
+              - column:
+                  name: path
+                  constraints:
+                    nullable: false
+                  type: varchar
+              - column:
+                  name: content_type
+                  constraints:
+                    nullable: false
+                  type: varchar
+              - column:
+                  name: origin_name
+                  type: varchar
+              - column:
+                  name: post_id
+                  type: bigint
