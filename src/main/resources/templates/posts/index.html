@@ -56,6 +56,8 @@
 <script th:inline="javascript">
 
 $(document).ready(function () {
+
+     var token = /*[[${jwtToken}]]*/ ;
      var tableWidget = $('#data-posts').DataTable({
      processing: true,
      serverSide: true,
@@ -63,6 +65,9 @@ $(document).ready(function () {
          url: 'http://localhost:8000/api/posts',
          type: 'POST',
          contentType: 'application/json',
+         beforeSend: function(request){
+            request.setRequestHeader("Authorization","Bearer " + token);
+         },
          data: function (d) {
              return JSON.stringify(d);
          }
@@ -109,6 +114,9 @@ $("#selectDelete").on('click',function(){
          method: "DELETE",
          contentType: 'application/json',
          url: "http://localhost:8000/api/posts/deleteAll",
+         beforeSend: function(request){
+            request.setRequestHeader("Authorization","Bearer " + token);
+         },
          data: JSON.stringify({"ids":arr})
      }).done(function(data) {
          tableWidget.ajax.reload();
@@ -143,6 +151,9 @@ $("#selectDelete").on('click',function(){
          contentType: 'application/json',
          url: "http://localhost:8000/api/posts/generate-report",
          data: tableWidget.ajax.params(),
+         beforeSend: function(request){
+            request.setRequestHeader("Authorization","Bearer " + token);
+         },
          xhrFields: {
              responseType: 'blob'
          },
@@ -172,6 +183,9 @@ $("#selectDelete").on('click',function(){
         $.ajax({
          method: "DELETE",
          contentType: 'application/json',
+         beforeSend: function(request){
+            request.setRequestHeader("Authorization","Bearer " + token);
+         },
          url: urlApi,
      }).done(function(response) {
         console.log(response);

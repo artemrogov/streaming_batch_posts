@@ -4,6 +4,9 @@ package com.artemrogov.streaming.controller;
 import com.artemrogov.streaming.dto.blog.PostRequest;
 import com.artemrogov.streaming.service.content.IContentService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.oauth2.client.OAuth2AuthorizedClient;
+import org.springframework.security.oauth2.client.OAuth2AuthorizedClientService;
+import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,10 +18,11 @@ import org.springframework.web.bind.annotation.*;
 public class CPostMvcForm {
 
     private final IContentService contentService;
-
+    private final OAuth2AuthorizedClientService authService;
 
     @GetMapping
-    public String getMainPage(){
+    public String getIndexPage(Model model, OAuth2AuthenticationToken auth){
+        model.addAttribute("jwtToken",getJwtTokenAuthUser(auth));
         return "posts/index";
     }
 
@@ -51,5 +55,16 @@ public class CPostMvcForm {
         }
         contentService.update(id,post);
         return "redirect:/posts";
+    }
+
+    private OAuth2AuthorizedClient getClient(OAuth2AuthenticationToken authentication){
+        return  authService.loadAuthorizedClient(
+                authentication.getAuthorizedClientRegistrationId(),
+                authentication.getName()
+        );
+    }
+
+    private String getJwtTokenAuthUser(OAuth2AuthenticationToken authentication){
+        return this.getClient(authentication).getAccessToken().getTokenValue();
     }
 }

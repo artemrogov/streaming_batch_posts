@@ -1,4 +1,4 @@
-package com.artemrogov.streaming.config;
+package com.artemrogov.streaming.config.htmltemplate;
 
 
 import org.springframework.context.annotation.Bean;

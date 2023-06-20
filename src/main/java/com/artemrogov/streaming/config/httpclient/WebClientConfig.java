@@ -1,4 +1,4 @@
-package com.artemrogov.streaming.config;
+package com.artemrogov.streaming.config.httpclient;
 
 
 import org.springframework.beans.factory.annotation.Value;
