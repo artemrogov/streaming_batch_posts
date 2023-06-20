@@ -28,13 +28,16 @@ public class ConfigSecurity {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.authorizeRequests().anyRequest().authenticated();
+
+        http.authorizeRequests(authorizeRequests -> authorizeRequests.antMatchers("/main")
+                .permitAll())
+                .authorizeRequests(authorizeRequests -> authorizeRequests.anyRequest().authenticated());
 
         http.oauth2Login()
                 .and()
                 .logout()
                 .addLogoutHandler(logoutHandler)
-                .logoutSuccessUrl("/");
+                .logoutSuccessUrl("/main");
         http.oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt);
 
         return http.build();

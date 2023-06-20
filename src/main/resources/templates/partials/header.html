@@ -12,13 +12,20 @@
             <a class="nav-link" href="#">Home <span class="visually-hidden">(current)</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Link 1</a>
+            <a class="nav-link" href="#">Posts</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Link 2</a>
+            <a class="nav-link" href="#">Tags</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="#">Link 3</a>
+        </li>
+        <form name="logoutForm" th:action="@{/logout}" method="post" th:hidden="true">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+            <input hidden type="submit" value="Sign Out"/>
+        </form>
+        <li class="nav-item">
+            <a class="nav-link" href="javascript: document.logoutForm.submit()">Logout</a>
         </li>
     </ul>
 <form class="d-flex">
