@@ -58,6 +58,10 @@
 $(document).ready(function () {
 
      var token = /*[[${jwtToken}]]*/ ;
+     var refreshTokenValue = /*[[${refreshToken}]]*/ ;
+
+     console.log(refreshTokenValue);
+
      var tableWidget = $('#data-posts').DataTable({
      processing: true,
      serverSide: true,
@@ -70,6 +74,9 @@ $(document).ready(function () {
          },
          data: function (d) {
              return JSON.stringify(d);
+         },
+         error: function(err){
+                    console.log(err);
          }
      },
      columns: [

@@ -12,6 +12,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Objects;
+
 @Controller
 @RequiredArgsConstructor
 @RequestMapping(value = "/posts")
@@ -23,6 +25,7 @@ public class CPostMvcForm {
     @GetMapping
     public String getIndexPage(Model model, OAuth2AuthenticationToken auth){
         model.addAttribute("jwtToken",getJwtTokenAuthUser(auth));
+        model.addAttribute("refreshToken",getRefreshToken(auth));
         return "posts/index";
     }
 
@@ -66,5 +69,9 @@ public class CPostMvcForm {
 
     private String getJwtTokenAuthUser(OAuth2AuthenticationToken authentication){
         return this.getClient(authentication).getAccessToken().getTokenValue();
+    }
+
+    private String getRefreshToken(OAuth2AuthenticationToken authentication){
+        return Objects.requireNonNull(this.getClient(authentication).getRefreshToken()).getTokenValue();
     }
 }
