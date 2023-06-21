@@ -1,8 +1,10 @@
 package com.artemrogov.streaming.controller;
 
 
+import com.artemrogov.streaming.dto.blog.CategoryResponse;
 import com.artemrogov.streaming.dto.blog.PostRequest;
 import com.artemrogov.streaming.service.content.IContentService;
+import com.artemrogov.streaming.service.content.category.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.oauth2.client.OAuth2AuthorizedClient;
 import org.springframework.security.oauth2.client.OAuth2AuthorizedClientService;
@@ -12,14 +14,15 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Objects;
 
 @Controller
 @RequiredArgsConstructor
 @RequestMapping(value = "/posts")
 public class CPostMvcForm {
-
     private final IContentService contentService;
+    private final CategoryService categoryService;
     private final OAuth2AuthorizedClientService authService;
 
     @GetMapping
@@ -31,6 +34,10 @@ public class CPostMvcForm {
 
     @GetMapping(value = "/create")
     public String getCreateForm(Model model){
+
+        List<CategoryResponse> response = categoryService.getSimpleListResponseData();
+        model.addAttribute("categories",response);
+
         model.addAttribute("post", new PostRequest());
         return "posts/create";
     }

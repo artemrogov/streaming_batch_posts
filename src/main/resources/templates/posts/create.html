@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link th:href="@{/coreui.css}" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <title>Man page</title>
 </head>
 <body>
@@ -23,6 +24,12 @@
                            <div class="mb-3">
                               <label class="form-label" for="titlePost">Title post</label>
                               <input class="form-control" type="text" th:field="*{title}" placeholder="title" id="titlePost"/>
+                           </div>
+                           <div class="mb-3">
+                               <label class="form-label" for="selectCatItem">Select categories</label>
+                               <select class="selectorCatItems form-select" id = "selectCatItem" name="categories[]" multiple="multiple">
+                                   <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.title}"></option>
+                               </select>
                            </div>
                            <div class="mb-3">
                                <label class="form-label" for="content">Content post</label>
@@ -44,11 +51,16 @@
 <script th:src="@{/coreui.js}"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdn.ckeditor.com/ckeditor5/38.0.1/classic/ckeditor.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script>
         ClassicEditor.create(document.querySelector('#content'),{
             removePlugins: ['CKFinder'],
         }).catch( error => {
                 console.error( error );
+        });
+
+        $(document).ready(function() {
+              $('.selectorCatItems').select2();
         });
 </script>
 </body>

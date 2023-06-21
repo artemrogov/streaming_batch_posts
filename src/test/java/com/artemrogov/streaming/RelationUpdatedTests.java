@@ -1,8 +1,11 @@
 package com.artemrogov.streaming;
 
 
+import com.artemrogov.streaming.dto.blog.CategoryRequest;
 import com.artemrogov.streaming.dto.blog.PostRequest;
+import com.artemrogov.streaming.service.content.category.CategoryService;
 import com.artemrogov.streaming.service.content.ContentService;
+import com.artemrogov.streaming.utils.CategoryGenerator;
 import com.artemrogov.streaming.utils.PostGenerator;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +21,10 @@ public class RelationUpdatedTests {
 
     @Autowired
     private ContentService contentService;
+
+
+    @Autowired
+    private CategoryService categoryService;
 
     @Test
     public void testUpdateRelations(){
@@ -49,6 +56,15 @@ public class RelationUpdatedTests {
           List<PostRequest> postsRequestsData = Stream.generate(PostGenerator::generatePosts)
                   .limit(20).collect(Collectors.toList());
          this.contentService.createPosts(postsRequestsData);
+
+    }
+
+    @Test
+    public void fillCategoriesTests(){
+        List<CategoryRequest> categoryRequests = Stream.generate(CategoryGenerator::generateCategory)
+                .limit(10)
+                .collect(Collectors.toList());
+        categoryService.createAll(categoryRequests);
     }
 
     @Test

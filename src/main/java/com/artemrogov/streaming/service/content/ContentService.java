@@ -7,7 +7,7 @@ import com.artemrogov.streaming.dto.datatable.DataTableResultList;
 import com.artemrogov.streaming.dto.datatable.PostDataRow;
 import com.artemrogov.streaming.entities.Category;
 import com.artemrogov.streaming.entities.Post;
-import com.artemrogov.streaming.mapper.BlogMapper;
+import com.artemrogov.streaming.mapper.PostMapper;
 import com.artemrogov.streaming.repositories.CategoryRepository;
 import com.artemrogov.streaming.repositories.PostDataRepository;
 import lombok.RequiredArgsConstructor;
@@ -29,7 +29,7 @@ import java.util.stream.Collectors;
 public class ContentService implements IContentService{
     private final PostDataRepository postDataRepository;
     private final CategoryRepository categoryRepository;
-    private final BlogMapper blogMapper;
+    private final PostMapper blogMapper;
 
 
     @Override
