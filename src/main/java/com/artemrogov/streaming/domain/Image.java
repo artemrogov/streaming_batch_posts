@@ -1,4 +1,4 @@
-package com.artemrogov.streaming.entities;
+package com.artemrogov.streaming.domain;
 
 
 import lombok.Getter;

@@ -6,6 +6,7 @@ import com.artemrogov.streaming.dto.datatable.DataTableResultList;
 import com.artemrogov.streaming.dto.datatable.PostDataRow;
 
 import java.io.IOException;
+import java.time.Instant;
 import java.util.List;
 
 public interface IContentService {
@@ -29,4 +30,7 @@ public interface IContentService {
     void destroyByIds(List<Long> ids);
 
     String generateExcelReport(DataTableRequest request) throws IOException;
+
+    List<PostDataRow> getPostsDateRange(Instant start, Instant end);
+
 }

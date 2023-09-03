@@ -1,7 +1,7 @@
 package com.artemrogov.streaming;
 
-import com.artemrogov.streaming.entities.Category;
-import com.artemrogov.streaming.entities.Post;
+import com.artemrogov.streaming.domain.Category;
+import com.artemrogov.streaming.domain.Post;
 import com.artemrogov.streaming.repositories.CategoryRepository;
 import com.artemrogov.streaming.repositories.PostDataRepository;
 import org.junit.jupiter.api.Test;

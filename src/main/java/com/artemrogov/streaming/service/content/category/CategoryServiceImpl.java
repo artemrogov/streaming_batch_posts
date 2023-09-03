@@ -3,7 +3,7 @@ package com.artemrogov.streaming.service.content.category;
 
 import com.artemrogov.streaming.dto.blog.CategoryRequest;
 import com.artemrogov.streaming.dto.blog.CategoryResponse;
-import com.artemrogov.streaming.entities.Category;
+import com.artemrogov.streaming.domain.Category;
 import com.artemrogov.streaming.mapper.CategoryMapper;
 import com.artemrogov.streaming.repositories.CategoryRepository;
 import lombok.RequiredArgsConstructor;

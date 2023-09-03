@@ -4,11 +4,13 @@ package com.artemrogov.streaming.controller;
 import com.artemrogov.streaming.dto.datatable.DataTableRequest;
 import com.artemrogov.streaming.dto.datatable.DataTableResultList;
 import com.artemrogov.streaming.dto.datatable.DeleteListRequest;
+import com.artemrogov.streaming.dto.datatable.PostDataRow;
 import com.artemrogov.streaming.service.content.IContentService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +20,10 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.util.Date;
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "/api/posts")
@@ -29,7 +35,22 @@ public class PostController {
 
     @PostMapping
     public ResponseEntity<DataTableResultList> getPosts(@RequestBody DataTableRequest request){
+        // limit - length
+        // offset - start
+        // draw equals limit
         return  ResponseEntity.ok(contentService.getPosts(request.getLength(),request.getStart(), request.getDraw()));
+    }
+
+
+    @GetMapping(value = "/filter-range-dates")
+    public ResponseEntity<List<PostDataRow>> getPostsByRangeDate(
+            @RequestParam("start") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date start,
+            @RequestParam("end") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)   Date end
+            ){
+
+        //java.time.Instant
+        List<PostDataRow> rows = contentService.getPostsDateRange(start.toInstant(),end.toInstant());
+        return  ResponseEntity.ok(rows);
     }
 
 
@@ -71,4 +92,7 @@ public class PostController {
             throw new RuntimeException(e);
         }
     }
+
+
+
 }

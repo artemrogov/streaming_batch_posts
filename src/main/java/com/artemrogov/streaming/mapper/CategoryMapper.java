@@ -2,7 +2,7 @@ package com.artemrogov.streaming.mapper;
 
 import com.artemrogov.streaming.dto.blog.CategoryRequest;
 import com.artemrogov.streaming.dto.blog.CategoryResponse;
-import com.artemrogov.streaming.entities.Category;
+import com.artemrogov.streaming.domain.Category;
 import org.mapstruct.BeanMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;

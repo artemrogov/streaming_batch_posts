@@ -9,6 +9,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.time.Instant;
 
 @Data
 @AllArgsConstructor
@@ -24,4 +25,10 @@ public class PostDataRow implements Serializable {
     private String content;
     @JsonProperty("active")
     private Boolean active;
+
+    @JsonProperty("startDate")
+    private Instant startDate;
+
+    @JsonProperty("endDate")
+    private Instant endDate;
 }

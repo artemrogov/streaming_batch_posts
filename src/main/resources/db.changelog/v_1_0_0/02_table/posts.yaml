@@ -24,3 +24,21 @@ databaseChangeLog:
               - column:
                   name: active
                   type: boolean
+
+  - changeSet:
+      id: create_start_date
+      author: Artem Rogov
+      changes:
+        - addColumn:
+            tableName: posts
+            columns:
+              - column:
+                  name: start_date
+                  constraints:
+                    nullable: true
+                  type: timestamp
+              - column:
+                  name: end_date
+                  constraints:
+                    nullable: true
+                  type: timestamp

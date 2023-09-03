@@ -1,6 +1,6 @@
 package com.artemrogov.streaming.repositories;
 
-import com.artemrogov.streaming.entities.Category;
+import com.artemrogov.streaming.domain.Category;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -5,8 +5,8 @@ import com.artemrogov.streaming.dto.blog.PostRequest;
 import com.artemrogov.streaming.dto.datatable.DataTableRequest;
 import com.artemrogov.streaming.dto.datatable.DataTableResultList;
 import com.artemrogov.streaming.dto.datatable.PostDataRow;
-import com.artemrogov.streaming.entities.Category;
-import com.artemrogov.streaming.entities.Post;
+import com.artemrogov.streaming.domain.Category;
+import com.artemrogov.streaming.domain.Post;
 import com.artemrogov.streaming.mapper.PostMapper;
 import com.artemrogov.streaming.repositories.CategoryRepository;
 import com.artemrogov.streaming.repositories.PostDataRepository;
@@ -19,6 +19,7 @@ import javax.transaction.Transactional;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -84,6 +85,13 @@ public class ContentService implements IContentService{
                  .recordsTotal(countPosts)
                  .recordsFiltered(countPosts)
                  .build();
+    }
+
+    @Override
+    public List<PostDataRow> getPostsDateRange(Instant start, Instant end) {
+       return this.postDataRepository.findPostsByDateRange(start,end)
+                .stream().map(blogMapper::convertPostResponse)
+                .collect(Collectors.toList());
     }
 
     @Override

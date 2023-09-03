@@ -1,7 +1,7 @@
 package com.artemrogov.streaming;
 
 
-import com.artemrogov.streaming.entities.Post;
+import com.artemrogov.streaming.domain.Post;
 import com.artemrogov.streaming.repositories.PostDataRepository;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
