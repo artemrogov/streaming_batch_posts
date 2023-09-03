@@ -1,6 +1,6 @@
 package com.artemrogov.streaming.utils;
 
-import com.artemrogov.streaming.dto.blog.CategoryRequest;
+import com.artemrogov.streaming.model.blog.CategoryRequest;
 import com.github.javafaker.Faker;
 
 public class CategoryGenerator {

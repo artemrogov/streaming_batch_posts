@@ -1,4 +1,4 @@
-package com.artemrogov.streaming.dto.datatable;
+package com.artemrogov.streaming.model.datatable;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;

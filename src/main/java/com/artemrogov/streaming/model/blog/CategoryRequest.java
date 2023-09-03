@@ -1,6 +1,8 @@
-package com.artemrogov.streaming.dto.blog;
+package com.artemrogov.streaming.model.blog;
+
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,9 +15,11 @@ import java.io.Serializable;
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Builder
-public class PostResponse implements Serializable {
-    private Long id;
+public class CategoryRequest implements Serializable {
+    @JsonProperty("title")
     private String title;
+    @JsonProperty("content")
     private String content;
-
+    @JsonProperty("active")
+    private Boolean active;
 }

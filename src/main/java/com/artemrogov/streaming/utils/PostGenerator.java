@@ -1,6 +1,6 @@
 package com.artemrogov.streaming.utils;
 
-import com.artemrogov.streaming.dto.blog.PostRequest;
+import com.artemrogov.streaming.model.blog.PostRequest;
 import com.github.javafaker.Faker;
 
 public class PostGenerator {

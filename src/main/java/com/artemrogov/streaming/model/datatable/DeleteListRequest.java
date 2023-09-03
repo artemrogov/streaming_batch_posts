@@ -1,25 +1,21 @@
-package com.artemrogov.streaming.dto.blog;
+package com.artemrogov.streaming.model.datatable;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-@Builder
-public class CategoryRequest implements Serializable {
-    @JsonProperty("title")
-    private String title;
-    @JsonProperty("content")
-    private String content;
-    @JsonProperty("active")
-    private Boolean active;
+public class DeleteListRequest implements Serializable {
+
+    @JsonProperty("ids")
+    private List<Long> ids = new ArrayList<>();
 }

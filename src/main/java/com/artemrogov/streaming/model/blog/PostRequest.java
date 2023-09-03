@@ -1,4 +1,4 @@
-package com.artemrogov.streaming.dto.blog;
+package com.artemrogov.streaming.model.blog;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;

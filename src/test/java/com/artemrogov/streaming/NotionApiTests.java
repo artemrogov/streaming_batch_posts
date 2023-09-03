@@ -1,8 +1,8 @@
 package com.artemrogov.streaming;
 
 
-import com.artemrogov.streaming.dto.notion.PageNotionResponse;
-import com.artemrogov.streaming.dto.notion.TableModel;
+import com.artemrogov.streaming.model.notion.PageNotionResponse;
+import com.artemrogov.streaming.model.notion.TableModel;
 import com.artemrogov.streaming.service.notion.NotionDataService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.extern.slf4j.Slf4j;

@@ -1,7 +1,7 @@
 package com.artemrogov.streaming.service.content.category;
 
-import com.artemrogov.streaming.dto.blog.CategoryRequest;
-import com.artemrogov.streaming.dto.blog.CategoryResponse;
+import com.artemrogov.streaming.model.blog.CategoryRequest;
+import com.artemrogov.streaming.model.blog.CategoryResponse;
 import com.artemrogov.streaming.domain.Category;
 
 import java.util.List;

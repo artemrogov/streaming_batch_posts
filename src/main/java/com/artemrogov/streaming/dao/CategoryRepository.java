@@ -1,4 +1,4 @@
-package com.artemrogov.streaming.repositories;
+package com.artemrogov.streaming.dao;
 
 import com.artemrogov.streaming.domain.Category;
 import org.springframework.data.jpa.repository.JpaRepository;

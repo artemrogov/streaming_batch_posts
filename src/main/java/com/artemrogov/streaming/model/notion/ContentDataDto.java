@@ -1,21 +1,23 @@
-package com.artemrogov.streaming.dto.datatable;
+package com.artemrogov.streaming.model.notion;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class DeleteListRequest implements Serializable {
+public class ContentDataDto implements Serializable {
+    private Long id;
+    private String title;
 
-    @JsonProperty("ids")
-    private List<Long> ids = new ArrayList<>();
+    private List<Long> categoriesIds = new ArrayList<>();
 }

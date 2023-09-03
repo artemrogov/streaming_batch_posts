@@ -1,7 +1,7 @@
 package com.artemrogov.streaming;
 
 import com.artemrogov.streaming.domain.Post;
-import com.artemrogov.streaming.repositories.PostDataRepository;
+import com.artemrogov.streaming.dao.PostDataRepository;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFFont;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;

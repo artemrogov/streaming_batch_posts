@@ -1,9 +1,9 @@
 package com.artemrogov.streaming.service.content;
 
-import com.artemrogov.streaming.dto.blog.PostRequest;
-import com.artemrogov.streaming.dto.datatable.DataTableRequest;
-import com.artemrogov.streaming.dto.datatable.DataTableResultList;
-import com.artemrogov.streaming.dto.datatable.PostDataRow;
+import com.artemrogov.streaming.model.blog.PostRequest;
+import com.artemrogov.streaming.model.datatable.DataTableRequest;
+import com.artemrogov.streaming.model.datatable.DataTableResultList;
+import com.artemrogov.streaming.model.datatable.PostDataRow;
 
 import java.io.IOException;
 import java.time.Instant;

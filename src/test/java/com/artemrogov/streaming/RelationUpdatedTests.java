@@ -1,8 +1,8 @@
 package com.artemrogov.streaming;
 
 
-import com.artemrogov.streaming.dto.blog.CategoryRequest;
-import com.artemrogov.streaming.dto.blog.PostRequest;
+import com.artemrogov.streaming.model.blog.CategoryRequest;
+import com.artemrogov.streaming.model.blog.PostRequest;
 import com.artemrogov.streaming.service.content.category.CategoryService;
 import com.artemrogov.streaming.service.content.ContentService;
 import com.artemrogov.streaming.utils.CategoryGenerator;

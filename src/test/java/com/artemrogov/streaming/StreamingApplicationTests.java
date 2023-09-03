@@ -2,8 +2,8 @@ package com.artemrogov.streaming;
 
 import com.artemrogov.streaming.domain.Category;
 import com.artemrogov.streaming.domain.Post;
-import com.artemrogov.streaming.repositories.CategoryRepository;
-import com.artemrogov.streaming.repositories.PostDataRepository;
+import com.artemrogov.streaming.dao.CategoryRepository;
+import com.artemrogov.streaming.dao.PostDataRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

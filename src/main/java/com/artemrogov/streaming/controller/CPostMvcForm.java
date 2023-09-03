@@ -1,8 +1,8 @@
 package com.artemrogov.streaming.controller;
 
 
-import com.artemrogov.streaming.dto.blog.CategoryResponse;
-import com.artemrogov.streaming.dto.blog.PostRequest;
+import com.artemrogov.streaming.model.blog.CategoryResponse;
+import com.artemrogov.streaming.model.blog.PostRequest;
 import com.artemrogov.streaming.service.content.IContentService;
 import com.artemrogov.streaming.service.content.category.CategoryService;
 import lombok.RequiredArgsConstructor;

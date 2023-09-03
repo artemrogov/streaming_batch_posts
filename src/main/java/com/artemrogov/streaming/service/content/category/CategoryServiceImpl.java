@@ -1,11 +1,11 @@
 package com.artemrogov.streaming.service.content.category;
 
 
-import com.artemrogov.streaming.dto.blog.CategoryRequest;
-import com.artemrogov.streaming.dto.blog.CategoryResponse;
+import com.artemrogov.streaming.model.blog.CategoryRequest;
+import com.artemrogov.streaming.model.blog.CategoryResponse;
 import com.artemrogov.streaming.domain.Category;
 import com.artemrogov.streaming.mapper.CategoryMapper;
-import com.artemrogov.streaming.repositories.CategoryRepository;
+import com.artemrogov.streaming.dao.CategoryRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

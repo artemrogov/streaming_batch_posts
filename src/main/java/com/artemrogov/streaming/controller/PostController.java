@@ -1,10 +1,10 @@
 package com.artemrogov.streaming.controller;
 
 
-import com.artemrogov.streaming.dto.datatable.DataTableRequest;
-import com.artemrogov.streaming.dto.datatable.DataTableResultList;
-import com.artemrogov.streaming.dto.datatable.DeleteListRequest;
-import com.artemrogov.streaming.dto.datatable.PostDataRow;
+import com.artemrogov.streaming.model.datatable.DataTableRequest;
+import com.artemrogov.streaming.model.datatable.DataTableResultList;
+import com.artemrogov.streaming.model.datatable.DeleteListRequest;
+import com.artemrogov.streaming.model.datatable.PostDataRow;
 import com.artemrogov.streaming.service.content.IContentService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -20,8 +20,6 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.time.Instant;
-import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.artemrogov.streaming.dto.notion;
+package com.artemrogov.streaming.model.notion;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
