@@ -8,17 +8,17 @@
         <span class="header-toggler-icon"></span>
     </button>
     <ul class="header-nav mr-auto">
-        <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="visually-hidden">(current)</span></a>
+        <li class="nav-item">
+            <a class="nav-link"  href="@{/main}">Main page</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Posts</a>
+            <a class="nav-link"  href="@{/posts}">Posts</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Tags</a>
+            <a class="nav-link" href="#">Categories</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Link 3</a>
+            <a class="nav-link" href="http://localhost:7001/profiles">Profile settings</a>
         </li>
         <form name="logoutForm" th:action="@{/logout}" method="post" th:hidden="true">
             <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
