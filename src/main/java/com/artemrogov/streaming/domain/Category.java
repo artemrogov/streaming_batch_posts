@@ -8,7 +8,7 @@ import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-@Entity(name = "category")
+@Entity
 @Table(name = "categories")
 @Getter
 @Setter

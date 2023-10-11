@@ -2,6 +2,7 @@ package com.artemrogov.streaming.dao.impl;
 
 import com.artemrogov.streaming.dao.CategoryDao;
 import com.artemrogov.streaming.domain.Category;
+import com.artemrogov.streaming.domain.Post;
 import lombok.NonNull;
 import org.springframework.stereotype.Repository;
 
@@ -43,5 +44,23 @@ public class CategoryDaoImpl implements CategoryDao {
         Category category = findById(id);
         em.remove(category);
         return category;
+    }
+
+    @Override
+    public void addPost(Long idCat, Long idPost) {
+        Category category = em.getReference(Category.class,idCat);
+        Post post = em.getReference(Post.class,idPost);
+        category.getPosts().add(post);
+        post.getCategories().add(category);
+        em.persist(category);
+    }
+
+    @Override
+    public void removePost(Long idCat, Long idPost) {
+        Category category = em.getReference(Category.class,idCat);
+        Post post = em.getReference(Post.class,idPost);
+        category.getPosts().remove(post);
+        post.getCategories().remove(category);
+        em.merge(category);
     }
 }
