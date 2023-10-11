@@ -103,10 +103,12 @@ public class DaoDomainTest {
         post.getCategories().add(category);
         category.getPosts().add(post);
 
-        Category catUpdated = testEntityManager.persist(category);
+         testEntityManager.merge(category);
+         testEntityManager.flush();
 
-        Assertions.assertNotNull(catUpdated.getPosts());
-        catUpdated.getPosts().forEach(p->{
+        Assertions.assertNotNull(category.getPosts());
+        category.getPosts().forEach(p->{
+            log.info("id post: "+p.getId());
             log.info("title post: "+p.getTitle());
         });
     }
