@@ -2,11 +2,14 @@ package com.artemrogov.streaming.domain;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.Generated;
+import org.hibernate.annotations.GenerationTime;
 
 import javax.persistence.*;
 import java.time.Instant;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.Date;
 
 @Entity
 @Table(name = "posts")
@@ -33,6 +36,12 @@ public class Post {
 
     @Column(name = "end_date")
     private Instant endDate;
+
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "last_modified", insertable = false, updatable = false)
+    @Generated(GenerationTime.ALWAYS)
+    private Date lastModified;
 
     @ManyToMany(mappedBy = "posts", fetch = FetchType.LAZY,cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Set<Category> categories = new HashSet<>();
