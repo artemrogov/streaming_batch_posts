@@ -1,6 +1,7 @@
-package com.artemrogov.streaming;
+package com.artemrogov.streaming.dao;
 
 
+import com.artemrogov.streaming.config.PostgresqlTestContainerConfig;
 import com.artemrogov.streaming.dao.PostDao;
 import com.artemrogov.streaming.dao.impl.PostDaoImpl;
 import com.artemrogov.streaming.domain.Post;
@@ -13,7 +14,7 @@ import org.springframework.context.annotation.Import;
 
 @Slf4j
 @Import(PostDaoImpl.class)
-public class DaoPost2Test extends PostgresqlTestContainerConfig{
+public class DaoPost2Test extends PostgresqlTestContainerConfig {
 
     @Autowired
     private PostDao postDao;
