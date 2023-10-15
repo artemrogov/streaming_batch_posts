@@ -42,3 +42,16 @@ databaseChangeLog:
                   constraints:
                     nullable: true
                   type: timestamp
+
+  - changeSet:
+      id: create_last_modified
+      author: Artem Rogov
+      changes:
+        - addColumn:
+            tableName: posts
+            columns:
+              - column:
+                  name: last_modified
+                  constraints:
+                    nullable: true
+                  type: timestamp
