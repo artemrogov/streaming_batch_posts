@@ -55,3 +55,14 @@ databaseChangeLog:
                   constraints:
                     nullable: true
                   type: timestamp
+
+  - changeSet:
+      id: create_status_posts
+      author: Artem Rogov
+      changes:
+        - addColumn:
+            tableName: posts
+            columns:
+              - column:
+                  name: status
+                  type: varchar

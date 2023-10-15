@@ -6,6 +6,7 @@ import org.hibernate.annotations.Generated;
 import org.hibernate.annotations.GenerationTime;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.time.Instant;
 import java.util.HashSet;
 import java.util.Set;
@@ -42,6 +43,11 @@ public class Post {
     @Column(name = "last_modified", insertable = false, updatable = false)
     @Generated(GenerationTime.ALWAYS)
     private Date lastModified;
+
+    @NotNull
+    @Column(name = "status")
+    @Enumerated(EnumType.STRING)
+    private PostStatus status = PostStatus.DRAFT;
 
     @ManyToMany(mappedBy = "posts", fetch = FetchType.LAZY,cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Set<Category> categories = new HashSet<>();
